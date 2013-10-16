@@ -3,12 +3,14 @@ vim_ex
 
 Vim configuration for frondend developer
 
-CSS Stylus Jade HTML JS Coffe
 
+#### Overview
 
 
 This version work with MacVim recompile with options --enable-luainterp
 Lua need for NeoComplite ([Read more](https://github.com/Shougo/neocomplete.vim))
+
+#### Install
 
 Install [NeoBundles](https://github.com/Shougo/neobundle.vim)
 
