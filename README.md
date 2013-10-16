@@ -1,8 +1,9 @@
 vim_ex
 ======
 
-Vim configuration for frondend 
-CSS::Stylus::Jade::HTML::JS::Coffe
+Vim configuration for frondend developer
+
+CSS>Stylus>Jade>HTML>JS>Coffe
 
 
 
