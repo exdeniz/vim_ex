@@ -3,7 +3,7 @@ vim_ex
 
 Vim configuration for frondend developer
 
-CSS>Stylus>Jade>HTML>JS>Coffe
+CSS Stylus Jade HTML JS Coffe
 
 
 
