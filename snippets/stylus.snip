@@ -1,3 +1,4 @@
+# Background
 snippet background
 alias   bg
     background ${1}
@@ -6,6 +7,20 @@ snippet background url
 alias   bgu
     background url('${1}') center center no-repeat${2}
 
+#height & width
+snippet width
+alias w
+  width ${1}
+
+snippet height
+alias h
+  height ${1}
+snippet height & weight
+alias wh
+alias hw
+  height ${1}
+  widht ${2}
+# Paddding and Margin
 snippet padding-right
 alias pr
     padding-right ${1}
@@ -17,12 +32,73 @@ alias pl
 snippet padding-top
 alias pt
     padding-top ${1}
+
 snippet padding-bottom
 alias pb
     padding-bottom ${1}
+
 snippet padding
 alias p
     padding ${1:0}em ${2:0}em ${3:0}em ${4:0}em
+
+snippet margin
+alias m
+    margin ${1:0}em ${2:0}em ${3:0}em ${4:0}em
+
+snippet margin-top
+alias mt
+    margin-top ${1}
+
+snippet margin-bottom
+alias mb
+    margin-bottom ${1}
+
+snippet margin-left
+alias ml
+    margin-left ${1}
+
+snippet margin-right
+alias mr
+    margin-right ${1}
+
+#Text align
+snippet text-align
+alias ta
+    text-align ${1}
+
+snippet text-align left
+alias tal
+    text-align left${1}
+
+snippet text-align right
+alias tar
+    text-align right${1}
+
+snippet text-align center
+alias tac
+    text-align center${1}
+
+# Blocks
+snippet display block
+alias db
+    display block${1}
+
+snippet display inline-block
+alias dib
+    display inline-block${1}
+
+snippet display none
+alias dn
+    display none${1}
+# Position
+snippet position
+alias pos
+    position ${1}
+
+snippet position absolute
+alias posa
+    position absolute${1}
+
 #Mixin snippet
 
 snippet col

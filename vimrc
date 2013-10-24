@@ -41,7 +41,7 @@ NeoBundle 'alfredodeza/jacinto.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'porqz/KeyboardLayoutSwitcher'
 NeoBundle 'bling/vim-airline'
-
+NeoBundle 'vim-scripts/Smart-Tabs'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -52,7 +52,7 @@ filetype plugin indent on
 set history=1000
 set autoread
 set so=7
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc
+set wildignore+=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc
 set wildmenu
 set cmdheight=1
 set hidden
@@ -69,8 +69,6 @@ set binary
 set cinoptions=:0,(s,u0,U1,g0,t0
 set completeopt=menuone,preview
 set encoding=utf-8
-set hidden
-set history=1000
 set incsearch
 set laststatus=2
 set list
@@ -87,7 +85,7 @@ set modelines=0
 set noeol
 set relativenumber
 set numberwidth=3
-set winwidth=83
+"set winwidth=83
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,12 +152,13 @@ set smarttab      " Be smart when using tabs ;)
 set shiftwidth=2  " Setup default ts
 set tabstop=2
 set softtabstop=2
-set lbr           " Linebreak on 500 characters
-set tw=500
+set copyindent
+"set lbr           " Linebreak on 500 characters
+"set tw=500
 set ai            " Auto indent
 set si            " Smart indent
 set nowrap          " Wrap lines
-set mouse=nicr    " Remove ME
+"set mouse=nicr    " Remove ME
 set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:␣
 " eol:¬,
 set showbreak=↪
@@ -365,7 +364,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 " Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
 " For cursor moving in insert mode(Not recommended)
 "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
@@ -373,9 +372,9 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
 "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
 " Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
+let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
+"let g:neocomplete#enable_insert_char_pre = 3
 
 " AutoComplPop like behavior.
 "let g:neocomplete#enable_auto_select = 1
@@ -388,6 +387,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css, setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType stylus, setlocal omnifunc=styluscomplete#CompleteStylus
 "autocmd FileType stylus, setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown, setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -454,6 +454,14 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.git/',
       \ 'git5/.*/review/',
       \ 'google/obj/',
+      \ 'apps/',
+      \ 'bower_components/',
+      \ 'node_modules/',
+      \ 'src/',
+      \ 'project/',
+      \ '.idea/',
+      \ '.png',
+      \ '.jpg'
       \ ], '\|'))
 
 " Use the fuzzy matcher for everything
@@ -464,7 +472,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
-nnoremap <Space>f :Unite file_rec<cr>
+nnoremap <Space>f :Unite file_rec/async<cr>
 nnoremap <C-P> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 nnoremap <leader>c :Unite colorscheme -auto-preview<cr>
 
