@@ -42,6 +42,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'porqz/KeyboardLayoutSwitcher'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-scripts/Smart-Tabs'
+NeoBundle 'marijnh/tern_for_vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -498,6 +499,10 @@ let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden --column'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
 
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
@@ -521,10 +526,12 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 nnoremap <space>/ :Unite grep:.<cr>
+nnoremap <space>v :UniteWithCursorWord grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
-nnoremap <Space>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
+nnoremap <Space>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec<cr>
 nnoremap <Space>b :<C-u>Unite -no-split -buffer-name=buffer buffer<cr>
 nnoremap <Space>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <Space>g :<C-u>Unite -no-split -buffer-name=files   -start-insert file_mru<cr>
 nnoremap <leader>c :Unite colorscheme -auto-preview<cr>
 
 autocmd FileType unite call s:unite_settings()

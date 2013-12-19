@@ -10,16 +10,16 @@ alias   bgu
 #height & width
 snippet width
 alias w
-  width ${1}
+    width ${1}
 
 snippet height
 alias h
-  height ${1}
+    height ${1}
 snippet height & weight
 alias wh
 alias hw
-  height ${1}
-  widht ${2}
+    height ${1}
+    widht ${2}
 # Paddding and Margin
 snippet padding-right
 alias pr
@@ -39,11 +39,15 @@ alias pb
 
 snippet padding
 alias p
-    padding ${1:0}em ${2:0}em ${3:0}em ${4:0}em
+    padding ${1:0}px ${2:0}px ${3:0}px ${4:0}px
+
+snippet padding 0
+alias p0
+    padding 0
 
 snippet margin
 alias m
-    margin ${1:0}em ${2:0}em ${3:0}em ${4:0}em
+    margin ${1:0}px ${2:0}px ${3:0}px ${4:0}px
 
 snippet margin-top
 alias mt
@@ -60,6 +64,10 @@ alias ml
 snippet margin-right
 alias mr
     margin-right ${1}
+
+snippet margin 0
+alias m0
+    margin 0
 
 #Text align
 snippet text-align
